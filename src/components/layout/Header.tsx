@@ -14,23 +14,30 @@ export default function Header() {
     <header className="bg-white">
       {/* Top Bar */}
       <div className="border-b border-gray-100">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 text-xs text-gray-500">
-          <div>Saturday, August 08, 2026</div>
+  <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 text-xs text-gray-500">
+    <div>
+      {new Date().toLocaleDateString("en-US", {
+        weekday: "long",
+        month: "long",
+        day: "2-digit",
+        year: "numeric",
+      })}
+    </div>
 
-          <div className="hidden items-center gap-4 md:flex">
-            <span>About</span>
-            <span>Contact</span>
-            <span>Advertise</span>
-            <span>Subscribe</span>
-          </div>
-        </div>
-      </div>
+    <div className="hidden items-center gap-4 md:flex">
+      <span>About</span>
+      <span>Contact</span>
+      <span>Advertise</span>
+      <span>Subscribe</span>
+    </div>
+  </div>
+</div>
 
       {/* Logo Area */}
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-7">
         <div>
           <h1 className="text-4xl font-black tracking-[-2px] text-gray-950">
-            NEWS<span className="text-red-600">24</span>
+            ViralNews<span className="text-red-600">India</span>
           </h1>
 
           <p className="mt-1 text-[10px] font-semibold uppercase tracking-[4px] text-gray-400">

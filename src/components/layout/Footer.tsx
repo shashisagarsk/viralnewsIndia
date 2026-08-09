@@ -4,7 +4,7 @@ export default function Footer() {
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 md:grid-cols-4">
         <div className="md:col-span-2">
           <h2 className="text-3xl font-black">
-            NEWS<span className="text-red-600">24</span>
+            ViralNews<span className="text-red-600">India</span>
           </h2>
 
           <p className="mt-4 max-w-md text-sm leading-6 text-gray-400">
@@ -44,7 +44,7 @@ export default function Footer() {
 
       <div className="border-t border-gray-800">
         <div className="mx-auto max-w-7xl px-4 py-5 text-xs text-gray-500">
-          © 2026 News24. All rights reserved.
+          © 2026 ViralNewsIndia. All rights reserved.
         </div>
       </div>
     </footer>
