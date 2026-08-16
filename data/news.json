@@ -1,0 +1,129 @@
+[
+  {
+    "id": 1,
+    "title": "India announces major economic reforms as GDP growth accelerates",
+    "slug": "india-major-economic-reforms",
+    "category": "India",
+    "excerpt": "The government has unveiled a comprehensive package of economic reforms aimed at accelerating domestic manufacturing, strengthening infrastructure, and attracting foreign investment.",
+    "content": "## Transforming India's Economic Landscape\n\nThe government today announced a transformative series of economic reforms aimed at supercharging growth across core sectors including manufacturing, renewable energy, and digital infrastructure.\n\nAccording to senior officials in the Ministry of Finance, the new policy framework introduces targeted incentives for domestic production, simplifies regulatory compliance for small and medium enterprises, and outlines a $50 billion capital expenditure plan for national highway and rail corridors over the next three years.\n\n### Key Highlights of the Policy:\n* **Manufacturing Boost**: Streamlined single-window clearance for global manufacturing hubs establishing facilities in India.\n* **Green Energy Transition**: Significant tax concessions for investments in solar component manufacturing, green hydrogen, and EV battery supply chains.\n* **Financial Inclusivity**: Expansion of digital credit rails to empower over 10 million micro-entrepreneurs.\n\n> \"India is poised to remain the fastest growing major economy. These strategic policy updates will ensure our workforce is ready for the demands of the next technological century,\" stated the Finance Minister during the press briefing in New Delhi.\n\nMarket analysts and international rating agencies have reacted positively to the announcement, with benchmark indices recording strong morning gains. Industrial leaders emphasized that focus on regulatory ease will drastically improve ease of doing business metrics.",
+    "image": "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=1400&q=85",
+    "author": "Rahul Sharma",
+    "date": "Aug 16, 2026",
+    "featured": true,
+    "breaking": true,
+    "tags": [
+      "Economy",
+      "India",
+      "Policy",
+      "Markets"
+    ],
+    "views": 14200,
+    "createdAt": "2026-08-16T08:00:00.000Z"
+  },
+  {
+    "id": 2,
+    "title": "Technology giants unveil next-generation autonomous AI systems",
+    "slug": "technology-ai-wave",
+    "category": "Technology",
+    "excerpt": "Leading technology laboratories have demonstrated a new generation of autonomous artificial intelligence systems capable of complex multi-step reasoning and software engineering.",
+    "content": "## The Next Frontier in Artificial Intelligence\n\nThe technology industry has taken another leap forward with the simultaneous release of multimodal foundation models capable of continuous autonomous reasoning, real-time code synthesis, and multi-agent coordination.\n\nDevelopers and enterprise architects are reporting unprecedented speedups in technical workflows. Unlike previous iterations that generated static text snippets, these new autonomous agents can execute end-to-end debugging, architectural design, and live deployment verification.\n\n### What Makes This Wave Different?\n1. **Context Understanding**: Context windows now comfortably exceed millions of tokens with near-zero latency degradation.\n2. **Autonomous Tool Use**: Models can invoke external APIs, browser automation subagents, and cloud databases natively.\n3. **Safety & Verification**: Built-in cryptographic sandboxing ensures untrusted code is audited before runtime execution.\n\nIndustry observers predict that over 60% of enterprise software development pipelines will integrate agentic pair programmers by the end of 2027.",
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&q=85",
+    "author": "Ankit Verma",
+    "date": "Aug 15, 2026",
+    "featured": true,
+    "breaking": true,
+    "tags": [
+      "AI",
+      "Tech",
+      "Innovation",
+      "Software"
+    ],
+    "views": 9850,
+    "createdAt": "2026-08-15T10:30:00.000Z",
+    "updatedAt": "2026-08-16T09:10:21.002Z"
+  },
+  {
+    "id": 3,
+    "title": "Global markets react to central bank interest rate decisions",
+    "slug": "global-markets-economic-signals",
+    "category": "Business",
+    "excerpt": "Stock exchanges worldwide experienced volatile trading sessions as major central banks signaled coordinated monetary policy adjustments amid easing inflation numbers.",
+    "content": "## Global Markets Navigate New Monetary Signals\n\nGlobal equities and bond yields showed dynamic swings today following monetary policy announcements from central bankers across Asia, Europe, and North America.\n\nWith global headline inflation showing consistent signs of cooling down toward target bands, central bankers have signaled potential easing cycles while cautioning that labor market resilience warrants measured calibrations.\n\n### Market Movements Overview\n* **Asian Equities**: Major indices closed higher by 1.2% led by tech and consumer cyclicals.\n* **Commodities**: Crude oil stabilized around $78 per barrel as supply chain bottlenecks eased.\n* **Currencies**: The US Dollar index traded in a tight channel against the Rupee and Euro.\n\nPortfolio managers recommend maintaining balanced allocations across defensive dividend assets and quality growth equities as market fundamentals realign.",
+    "image": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1000&q=85",
+    "author": "Priya Mehta",
+    "date": "Aug 14, 2026",
+    "featured": false,
+    "breaking": true,
+    "tags": [
+      "Business",
+      "Markets",
+      "Economy",
+      "Stocks"
+    ],
+    "views": 6730,
+    "createdAt": "2026-08-14T14:15:00.000Z"
+  },
+  {
+    "id": 4,
+    "title": "Breakthrough quantum computing discovery announced by research consortium",
+    "slug": "new-science-discoveries",
+    "category": "Science",
+    "excerpt": "Physicists and quantum computer scientists have achieved a major milestone in fault-tolerant qubit coherence at near-room temperature conditions.",
+    "content": "## A Historic Leap for Quantum Computing\n\nA joint consortium of international research universities has demonstrated room-temperature fault tolerance in solid-state quantum memory chips, potentially resolving one of the most stubborn physics barriers in quantum scaling.\n\nUntil now, quantum processors required dilution refrigerators cooling components down to fractions of a Kelvin. The new topological insulator substrate maintains coherent superposition for minutes rather than milliseconds.\n\n### Potential Real-World Applications\n* **Drug Discovery**: Simulating complex molecular protein folding in minutes rather than decades.\n* **Climate Modeling**: Accurate micro-climate and carbon sequestration simulations.\n* **Logistics Optimization**: Instant routing calculation for global shipping networks.\n\nThe lead researcher stated that prototype industrial quantum coprocessors utilizing this technology could be available for commercial validation within five years.",
+    "image": "https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1000&q=85",
+    "author": "Neha Kapoor",
+    "date": "Aug 13, 2026",
+    "featured": false,
+    "breaking": false,
+    "tags": [
+      "Science",
+      "Quantum",
+      "Physics",
+      "Research"
+    ],
+    "views": 8120,
+    "createdAt": "2026-08-13T09:45:00.000Z"
+  },
+  {
+    "id": 5,
+    "title": "Urban renaissance: How smart infrastructure is redefining Indian megacities",
+    "slug": "modern-indian-cities",
+    "category": "Lifestyle",
+    "excerpt": "From high-speed transit corridors to AI-managed traffic and green public spaces, Indian metropolitan centers are undergoing rapid urban modernization.",
+    "content": "## The Modern Urban Revolution\n\nIndian cities are witnessing an unprecedented transformation driven by integrated multimodal transport systems, digital civic utilities, and eco-friendly urban masterplans.\n\nFrom Bengaluru and Mumbai to Tier-2 emerging hubs like Indore and Surat, municipal corporations are adopting automated waste management, smart LED illumination grids, and dedicated bicycle priority corridors.\n\n### Key Urban Improvements:\n* **Metro Connectivity**: Over 1,200 km of active metro rail networks now operational nationwide.\n* **Public Green Spaces**: Revitalized lakefronts and urban parks providing recreational lung spaces.\n* **Digital Citizen Portals**: 100% paperless municipal approvals reducing bureaucratic friction.\n\nUrban planners emphasize that sustainable urbanization is key to supporting India's economic expansion while improving citizen quality of life.",
+    "image": "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1000&q=85",
+    "author": "Aman Singh",
+    "date": "Aug 12, 2026",
+    "featured": false,
+    "breaking": false,
+    "tags": [
+      "Lifestyle",
+      "Urban",
+      "India",
+      "Infrastructure"
+    ],
+    "views": 4590,
+    "createdAt": "2026-08-12T11:20:00.000Z"
+  },
+  {
+    "id": 6,
+    "title": "National cricket team enters intense training camp ahead of championship",
+    "slug": "sports-new-season",
+    "category": "Sports",
+    "excerpt": "The national squad has assembled at the high-performance training center in Bengaluru for tactical drills, fitness evaluations, and match simulations.",
+    "content": "## All Eyes on the Championship Trophy\n\nWith the marquee international cricket championship just weeks away, the national cricket team has commenced an intensive training regime at the state-of-the-art National Cricket Academy.\n\nHead coach and team captain emphasized the squad's focus on fitness benchmarks, middle-order partnerships, and death-overs bowling precision under varied pitch conditions.\n\n### Training Focus Areas:\n* High-intensity fielding agility drills and GPS tracking analysis.\n* Specialized spin bowling net sessions against tailored robotic bowling machines.\n* Mental conditioning and pressure simulation workshops with sports psychologists.\n\nFans across the nation have already begun filling stadiums for warmup fixtures as excitement reaches fever pitch.",
+    "image": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1000&q=85",
+    "author": "Vikram Rao",
+    "date": "Aug 11, 2026",
+    "featured": false,
+    "breaking": true,
+    "tags": [
+      "Sports",
+      "Cricket",
+      "Championship",
+      "Fitness"
+    ],
+    "views": 11400,
+    "createdAt": "2026-08-11T16:00:00.000Z"
+  }
+]
