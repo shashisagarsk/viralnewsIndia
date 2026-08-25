@@ -202,17 +202,8 @@ export default function AdminDashboardPage() {
     };
   }, [newsList, storiesList]);
 
-  if (loading) {
-    return (
-      <div className="flex min-h-[70vh] items-center justify-center">
-        <div className="text-center">
-          <div className="h-8 w-8 animate-spin rounded-full border-2 border-red-600 border-t-transparent mx-auto" />
-          <p className="mt-3 text-xs font-semibold text-gray-500 uppercase tracking-widest">
-            Loading Newsroom Desk...
-          </p>
-        </div>
-      </div>
-    );
+  if (loading || !isAuthenticated) {
+    return null;
   }
 
   return (

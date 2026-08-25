@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/src/context/AuthContext";
-import { Lock, Mail, Eye, EyeOff, ShieldCheck, ArrowRight, Sparkles, AlertCircle } from "lucide-react";
+import { Lock, Mail, Eye, EyeOff, ShieldCheck, ArrowRight, AlertCircle } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -38,12 +38,6 @@ export default function AdminLoginPage() {
     }
   };
 
-  const fillDemoCredentials = () => {
-    setEmail("admin@viralnewsindia.com");
-    setPassword("admin@123");
-    setError(null);
-  };
-
   return (
     <div className="flex min-h-screen flex-col justify-center bg-gray-950 px-4 py-12 text-white sm:px-6 lg:px-8">
       {/* Background Subtle Gradient Blobs */}
@@ -76,25 +70,8 @@ export default function AdminLoginPage() {
           </p>
         </div>
 
-        {/* Demo Credentials Pill */}
-        <div className="mt-6">
-          <button
-            type="button"
-            onClick={fillDemoCredentials}
-            className="group flex w-full items-center justify-between rounded-lg border border-dashed border-red-500/40 bg-red-950/20 px-3.5 py-2.5 text-xs text-red-300 transition hover:border-red-500 hover:bg-red-950/40"
-          >
-            <span className="flex items-center gap-1.5 font-medium">
-              <Sparkles size={14} className="text-red-400 group-hover:animate-spin" />
-              <span>Demo Admin Credentials</span>
-            </span>
-            <span className="rounded bg-red-600/20 px-2 py-0.5 font-mono text-[11px] font-semibold text-red-300 group-hover:bg-red-600 group-hover:text-white transition">
-              Auto-Fill Form
-            </span>
-          </button>
-        </div>
-
         {/* Main Card */}
-        <div className="mt-5 rounded-2xl border border-gray-800 bg-gray-900/80 p-8 shadow-2xl backdrop-blur-xl">
+        <div className="mt-8 rounded-2xl border border-gray-800 bg-gray-900/80 p-8 shadow-2xl backdrop-blur-xl">
           {error && (
             <div className="mb-6 flex items-start gap-3 rounded-lg border border-red-500/30 bg-red-950/50 p-4 text-xs text-red-200">
               <AlertCircle size={16} className="mt-0.5 shrink-0 text-red-400" />
@@ -119,11 +96,11 @@ export default function AdminLoginPage() {
                   id="email"
                   name="email"
                   type="email"
-                  autoComplete="email"
+                  autoComplete="off"
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="admin@viralnewsindia.com"
+                  placeholder="name@example.com"
                   className="block w-full rounded-lg border border-gray-700 bg-gray-950/80 py-2.5 pl-10 pr-3 text-sm text-white placeholder-gray-500 shadow-inner focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
                 />
               </div>
@@ -147,7 +124,7 @@ export default function AdminLoginPage() {
                   id="password"
                   name="password"
                   type={showPassword ? "text" : "password"}
-                  autoComplete="current-password"
+                  autoComplete="off"
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}

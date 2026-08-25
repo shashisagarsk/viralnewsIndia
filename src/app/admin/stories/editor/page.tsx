@@ -303,7 +303,8 @@ function StoryEditorContent() {
   const activeSlide = slides[activeSlideIndex] || slides[0];
   const previewSlide = slides[previewSlideIndex] || slides[0];
 
-  if (authLoading || initialLoading) {
+  if (authLoading || !isAuthenticated || initialLoading) {
+    if (!isAuthenticated) return null;
     return (
       <div className="flex min-h-[70vh] items-center justify-center">
         <div className="text-center">

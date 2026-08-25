@@ -1,18 +1,18 @@
 "use client";
 
-import React, { ReactNode } from "react";
+import React, { ReactNode, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { AuthProvider, useAuth } from "@/src/context/AuthContext";
 import {
   LayoutDashboard,
   FilePlus2,
   FileText,
-  Smartphone,
   Globe,
   LogOut,
   ShieldCheck,
+  Loader2,
 } from "lucide-react";
 
 function AdminNavbar() {
@@ -135,18 +135,74 @@ function AdminNavbar() {
         >
           New Post
         </Link>
+        <Link
+          href="/admin/stories/editor"
+          className={`flex-1 text-center text-xs font-semibold py-1 rounded ${
+            pathname === "/admin/stories/editor" ? "bg-red-600 text-white" : "text-gray-300"
+          }`}
+        >
+          Web Story
+        </Link>
       </div>
     </header>
+  );
+}
+
+function AdminGuard({ children }: { children: ReactNode }) {
+  const pathname = usePathname();
+  const router = useRouter();
+  const { isAuthenticated, loading } = useAuth();
+  const isLoginPage = pathname === "/admin/login";
+
+  useEffect(() => {
+    if (!loading) {
+      if (!isAuthenticated && !isLoginPage) {
+        router.replace("/admin/login");
+      } else if (isAuthenticated && isLoginPage) {
+        router.replace("/admin");
+      }
+    }
+  }, [isAuthenticated, loading, isLoginPage, router]);
+
+  // If on login page
+  if (isLoginPage) {
+    if (loading || isAuthenticated) {
+      return (
+        <div className="flex min-h-screen items-center justify-center bg-gray-950 text-white">
+          <div className="flex flex-col items-center gap-3">
+            <Loader2 size={32} className="animate-spin text-red-500" />
+            <p className="text-xs font-medium text-gray-400">Loading...</p>
+          </div>
+        </div>
+      );
+    }
+    return <>{children}</>;
+  }
+
+  // If on protected admin pages
+  if (loading || !isAuthenticated) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-gray-950 text-white">
+        <div className="flex flex-col items-center gap-3">
+          <Loader2 size={32} className="animate-spin text-red-500" />
+          <p className="text-xs font-medium text-gray-400">Verifying Admin Access...</p>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-gray-100 text-gray-900 antialiased selection:bg-red-600 selection:text-white">
+      <AdminNavbar />
+      {children}
+    </div>
   );
 }
 
 export default function AdminLayout({ children }: { children: ReactNode }) {
   return (
     <AuthProvider>
-      <div className="min-h-screen bg-gray-100 text-gray-900 antialiased selection:bg-red-600 selection:text-white">
-        <AdminNavbar />
-        {children}
-      </div>
+      <AdminGuard>{children}</AdminGuard>
     </AuthProvider>
   );
 }
