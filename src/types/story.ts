@@ -3,7 +3,10 @@ export interface StorySlide {
   image: string;
   heading: string;
   description: string;
+  heading_hi?: string;
+  description_hi?: string;
   callToActionText?: string;
+  callToActionText_hi?: string;
   callToActionUrl?: string;
 }
 
@@ -20,4 +23,7 @@ export interface WebStory {
   featured?: boolean;
   createdAt: string;
   updatedAt: string;
+  title_hi?: string;
+  category_hi?: string;
 }
+

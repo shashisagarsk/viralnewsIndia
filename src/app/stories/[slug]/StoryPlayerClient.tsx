@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { WebStory, StorySlide } from "@/src/types/story";
+import { useLanguage } from "@/src/context/LanguageContext";
 import {
   X,
   Play,
@@ -15,8 +16,6 @@ import {
   ExternalLink,
   RotateCcw,
   Check,
-  Smartphone,
-  Layers,
 } from "lucide-react";
 
 interface StoryPlayerClientProps {
@@ -27,10 +26,15 @@ interface StoryPlayerClientProps {
 const SLIDE_DURATION_MS = 5000;
 
 export default function StoryPlayerClient({
-  story,
-  nextStory,
+  story: rawStory,
+  nextStory: rawNextStory,
 }: StoryPlayerClientProps) {
   const router = useRouter();
+  const { translateStory, t } = useLanguage();
+
+  const story = translateStory(rawStory);
+  const nextStory = rawNextStory ? translateStory(rawNextStory) : null;
+
   const slides = story.slides && story.slides.length > 0 ? story.slides : [];
 
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -39,7 +43,6 @@ export default function StoryPlayerClient({
   const [copied, setCopied] = useState<boolean>(false);
   const [isCompleted, setIsCompleted] = useState<boolean>(false);
 
-  const timerRef = useRef<NodeJS.Timeout | null>(null);
   const progressIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const holdStartRef = useRef<number>(0);
 
@@ -334,20 +337,22 @@ export default function StoryPlayerClient({
 
               <div>
                 <h3 className="text-lg font-black text-white">
-                  You&apos;ve Caught Up!
+                  {t("youCaughtUp")}
                 </h3>
                 <p className="mt-1 text-xs text-gray-300">
-                  You completed all slides for this visual story.
+                  {t("completedSlides")}
                 </p>
               </div>
 
               <div className="flex flex-col gap-2 pt-2">
                 {nextStory && (
                   <Link
-                    href={`/stories/${nextStory.slug}`}
+                    href={`/stories/${rawNextStory?.slug}`}
                     className="flex items-center justify-center gap-2 rounded-xl bg-red-600 py-3 text-xs font-black uppercase tracking-wider text-white shadow-lg shadow-red-600/40 hover:bg-red-700"
                   >
-                    <span>Next Story: {nextStory.title.substring(0, 24)}... →</span>
+                    <span>
+                      {t("nextStory")}: {nextStory.title.substring(0, 24)}... →
+                    </span>
                   </Link>
                 )}
 
@@ -357,14 +362,14 @@ export default function StoryPlayerClient({
                   className="flex items-center justify-center gap-1.5 rounded-xl border border-gray-700 bg-gray-900 py-2.5 text-xs font-bold text-gray-200 hover:bg-gray-800"
                 >
                   <RotateCcw size={14} />
-                  <span>Replay Story</span>
+                  <span>{t("replayStory")}</span>
                 </button>
 
                 <Link
                   href="/stories"
                   className="pt-2 text-[11px] font-semibold text-gray-400 hover:text-white"
                 >
-                  Browse All Visual Stories
+                  {t("browseAllStories")}
                 </Link>
               </div>
             </div>

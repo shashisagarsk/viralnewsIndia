@@ -4,16 +4,25 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Zap } from "lucide-react";
 import { News } from "@/src/types/news";
+import { useLanguage } from "@/src/context/LanguageContext";
 
 interface BreakingNewsProps {
   initialNews?: News;
 }
 
 export default function BreakingNews({ initialNews }: BreakingNewsProps) {
-  const [headline, setHeadline] = useState<{ title: string; slug: string }>(
+  const { language, t } = useLanguage();
+
+  const [headline, setHeadline] = useState<{
+    title: string;
+    title_hi?: string;
+    slug: string;
+  }>(
     initialNews || {
       title:
         "Latest headlines: Economic reforms and technological innovations accelerate across nation",
+      title_hi:
+        "ताज़ा सुर्खियां: देश भर में आर्थिक सुधारों और तकनीकी नवाचारों में आई तेजी",
       slug: "india-major-economic-reforms",
     }
   );
@@ -40,12 +49,17 @@ export default function BreakingNews({ initialNews }: BreakingNewsProps) {
     };
   }, []);
 
+  const displayTitle =
+    language === "hi" && headline.title_hi
+      ? headline.title_hi
+      : headline.title;
+
   return (
     <div className="border-b border-gray-200 bg-gray-50/80">
       <div className="mx-auto flex max-w-7xl items-center px-4">
         <div className="flex shrink-0 items-center gap-1.5 bg-red-600 px-3.5 py-2.5 text-[11px] font-black uppercase tracking-wider text-white shadow-sm">
           <Zap size={13} className="fill-white animate-pulse" />
-          <span>Breaking</span>
+          <span>{t("breaking")}</span>
         </div>
 
         <div className="overflow-hidden px-4 py-2">
@@ -53,7 +67,7 @@ export default function BreakingNews({ initialNews }: BreakingNewsProps) {
             href={`/news/${headline.slug}`}
             className="block truncate text-xs font-semibold text-gray-800 transition hover:text-red-600 hover:underline"
           >
-            {headline.title}
+            {displayTitle}
           </Link>
         </div>
       </div>

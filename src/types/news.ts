@@ -14,6 +14,12 @@ export interface News {
   views?: number;
   createdAt?: string;
   updatedAt?: string;
+  // Bilingual translation fields
+  title_hi?: string;
+  excerpt_hi?: string;
+  content_hi?: string;
+  category_hi?: string;
+  tags_hi?: string[];
 }
 
 export interface NewsFilters {

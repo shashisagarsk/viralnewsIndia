@@ -32,6 +32,7 @@ import {
   UploadCloud,
   Loader2,
   Cloud,
+  Languages,
 } from "lucide-react";
 
 const PRESET_IMAGES = [
@@ -83,18 +84,22 @@ function EditorContent() {
 
   // Form State
   const [title, setTitle] = useState("");
+  const [title_hi, setTitle_hi] = useState("");
   const [slug, setSlug] = useState("");
   const [autoSlug, setAutoSlug] = useState(true);
   const [category, setCategory] = useState("India");
   const [customCategory, setCustomCategory] = useState("");
   const [excerpt, setExcerpt] = useState("");
+  const [excerpt_hi, setExcerpt_hi] = useState("");
   const [content, setContent] = useState("");
+  const [content_hi, setContent_hi] = useState("");
   const [image, setImage] = useState(PRESET_IMAGES[0].url);
   const [author, setAuthor] = useState("Staff Reporter");
   const [date, setDate] = useState(formatDate());
   const [featured, setFeatured] = useState(false);
   const [breaking, setBreaking] = useState(false);
   const [tagsInput, setTagsInput] = useState("News, India, Latest");
+  const [showHindiFields, setShowHindiFields] = useState(false);
 
   // UI State
   const [activeTab, setActiveTab] = useState<"write" | "preview">("write");
@@ -131,6 +136,7 @@ function EditorContent() {
           if (data.success && data.data) {
             const art = data.data;
             setTitle(art.title || "");
+            setTitle_hi(art.title_hi || "");
             setSlug(art.slug || "");
             setAutoSlug(false);
             if (DEFAULT_CATEGORIES.includes(art.category)) {
@@ -140,7 +146,12 @@ function EditorContent() {
               setCustomCategory(art.category);
             }
             setExcerpt(art.excerpt || "");
+            setExcerpt_hi(art.excerpt_hi || "");
             setContent(art.content || "");
+            setContent_hi(art.content_hi || "");
+            if (art.title_hi || art.excerpt_hi || art.content_hi) {
+              setShowHindiFields(true);
+            }
             setImage(art.image || PRESET_IMAGES[0].url);
             setAuthor(art.author || "Staff Reporter");
             setDate(art.date || formatDate());
@@ -273,10 +284,13 @@ function EditorContent() {
 
     const payload = {
       title: title.trim(),
+      title_hi: title_hi.trim() || undefined,
       slug: slug.trim() ? slugify(slug) : slugify(title),
       category: finalCategory,
       excerpt: excerpt.trim(),
+      excerpt_hi: excerpt_hi.trim() || undefined,
       content: content.trim(),
+      content_hi: content_hi.trim() || undefined,
       image: image.trim(),
       author: author.trim(),
       date: date.trim() || formatDate(),
@@ -673,6 +687,76 @@ function EditorContent() {
                 </div>
               )}
             </div>
+          </div>
+
+          {/* Hindi Translation Section (Bilingual Support) */}
+          <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+            <div className="flex items-center justify-between">
+              <div>
+                <h3 className="text-xs font-bold uppercase tracking-wider text-gray-900 flex items-center gap-2">
+                  <Languages size={15} className="text-red-600" />
+                  Hindi Translation / हिंदी अनुवाद (Optional)
+                </h3>
+                <p className="mt-0.5 text-[11px] text-gray-500">
+                  Provide authentic Hindi headline, summary, and content for bilingual translate mode.
+                </p>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => setShowHindiFields(!showHindiFields)}
+                className={`rounded-lg px-3 py-1.5 text-xs font-bold transition ${
+                  showHindiFields
+                    ? "bg-red-600 text-white"
+                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                }`}
+              >
+                {showHindiFields ? "Hide Hindi Editor" : "Show Hindi Editor"}
+              </button>
+            </div>
+
+            {showHindiFields && (
+              <div className="mt-5 space-y-4 border-t border-gray-100 pt-4">
+                <div>
+                  <label className="block text-xs font-bold text-gray-700 mb-1">
+                    Hindi Headline / मुख्य शीर्षक (हिन्दी)
+                  </label>
+                  <input
+                    type="text"
+                    value={title_hi}
+                    onChange={(e) => setTitle_hi(e.target.value)}
+                    placeholder="उदा. भारत ने की बड़े आर्थिक सुधारों की घोषणा..."
+                    className="w-full rounded-lg border border-gray-200 p-2.5 text-sm font-semibold text-gray-900 focus:border-red-600 focus:outline-none focus:ring-1 focus:ring-red-600"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-gray-700 mb-1">
+                    Hindi Summary / संक्षिप्त विवरण (हिन्दी)
+                  </label>
+                  <textarea
+                    rows={2}
+                    value={excerpt_hi}
+                    onChange={(e) => setExcerpt_hi(e.target.value)}
+                    placeholder="संक्षिप्त 1-2 पंक्तियों का सारांश..."
+                    className="w-full rounded-lg border border-gray-200 p-2.5 text-xs text-gray-900 focus:border-red-600 focus:outline-none focus:ring-1 focus:ring-red-600"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-gray-700 mb-1">
+                    Hindi Full Content / सम्पूर्ण आलेख (हिन्दी)
+                  </label>
+                  <textarea
+                    rows={10}
+                    value={content_hi}
+                    onChange={(e) => setContent_hi(e.target.value)}
+                    placeholder="हिन्दी में पूरा समाचार लेख लिखें..."
+                    className="w-full rounded-lg border border-gray-200 p-3 text-xs leading-relaxed font-mono text-gray-900 focus:border-red-600 focus:outline-none focus:ring-1 focus:ring-red-600"
+                  />
+                </div>
+              </div>
+            )}
           </div>
         </div>
 

@@ -8,12 +8,23 @@ import BreakingNews from "@/src/components/layout/BreakingNews";
 import Footer from "@/src/components/layout/Footer";
 import NewsCard from "@/src/components/news/NewsCard";
 import { News } from "@/src/types/news";
+import { useLanguage } from "@/src/context/LanguageContext";
 import { Search, ChevronRight, FileText, Sparkles } from "lucide-react";
+
+const trendingTags = [
+  { key: "Economy", en: "Economy", hi: "अर्थव्यवस्था" },
+  { key: "AI", en: "AI", hi: "एआई" },
+  { key: "Cricket", en: "Cricket", hi: "क्रिकेट" },
+  { key: "Quantum", en: "Quantum", hi: "क्वांटम" },
+  { key: "Markets", en: "Markets", hi: "बाज़ार" },
+  { key: "Cities", en: "Cities", hi: "शहरी विकास" },
+];
 
 function SearchContent() {
   const searchParams = useSearchParams();
   const initialQuery = searchParams.get("q") || "";
 
+  const { language, t } = useLanguage();
   const [query, setQuery] = useState(initialQuery);
   const [results, setResults] = useState<News[]>([]);
   const [loading, setLoading] = useState(false);
@@ -54,21 +65,21 @@ function SearchContent() {
         {/* Breadcrumb */}
         <nav className="mb-6 flex items-center gap-2 text-xs text-gray-500 font-medium">
           <Link href="/" className="hover:text-red-600 transition">
-            Home
+            {t("home")}
           </Link>
           <ChevronRight size={12} />
           <span className="text-gray-900 font-bold uppercase">
-            Search News
+            {t("searchNews")}
           </span>
         </nav>
 
         {/* Search Header Bar */}
         <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8">
           <h1 className="text-2xl font-black text-gray-950 sm:text-3xl">
-            Search Across ViralNewsIndia
+            {t("searchHeader")}
           </h1>
           <p className="mt-1 text-xs text-gray-500">
-            Find breaking stories, archived reports, and topic analysis.
+            {t("searchSub")}
           </p>
 
           <form onSubmit={handleSearchSubmit} className="mt-5 flex gap-2">
@@ -80,7 +91,7 @@ function SearchContent() {
                 type="text"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search by keyword, headline, author, or topic..."
+                placeholder={t("searchPlaceholder")}
                 className="w-full rounded-xl border border-gray-200 py-3 pl-11 pr-4 text-sm text-gray-900 placeholder-gray-400 focus:border-red-600 focus:outline-none focus:ring-1 focus:ring-red-600"
               />
             </div>
@@ -89,7 +100,7 @@ function SearchContent() {
               className="flex items-center gap-2 rounded-xl bg-red-600 px-6 py-3 text-xs font-bold uppercase tracking-wider text-white shadow-md shadow-red-600/30 transition hover:bg-red-700"
             >
               <Search size={14} />
-              <span>Search</span>
+              <span>{t("searchButton")}</span>
             </button>
           </form>
 
@@ -97,23 +108,21 @@ function SearchContent() {
           <div className="mt-4 flex flex-wrap items-center gap-2 text-xs text-gray-500">
             <span className="font-semibold flex items-center gap-1">
               <Sparkles size={12} className="text-amber-500" />
-              Trending Topics:
+              {t("trendingTopics")}
             </span>
-            {["Economy", "AI", "Cricket", "Quantum", "Markets", "Cities"].map(
-              (tag) => (
-                <button
-                  key={tag}
-                  type="button"
-                  onClick={() => {
-                    setQuery(tag);
-                    performSearch(tag);
-                  }}
-                  className="rounded-full border border-gray-200 bg-gray-50 px-2.5 py-0.5 text-[11px] font-medium text-gray-700 hover:border-red-600 hover:text-red-600 transition"
-                >
-                  {tag}
-                </button>
-              )
-            )}
+            {trendingTags.map((tag) => (
+              <button
+                key={tag.key}
+                type="button"
+                onClick={() => {
+                  setQuery(tag.key);
+                  performSearch(tag.key);
+                }}
+                className="rounded-full border border-gray-200 bg-gray-50 px-2.5 py-0.5 text-[11px] font-medium text-gray-700 hover:border-red-600 hover:text-red-600 transition"
+              >
+                {language === "hi" ? tag.hi : tag.en}
+              </button>
+            ))}
           </div>
         </div>
 
@@ -121,10 +130,15 @@ function SearchContent() {
         <section className="mt-10">
           <div className="mb-6 flex items-center justify-between border-b-2 border-gray-950 pb-3">
             <h2 className="text-lg font-black uppercase tracking-wider text-gray-950">
-              {query ? `Search Results for "${query}"` : "All Articles"}
+              {query
+                ? `${t("searchResultsFor")} "${query}"`
+                : t("allArticles")}
             </h2>
             <span className="text-xs font-bold text-gray-500">
-              {results.length} Stories Found
+              {results.length}{" "}
+              {results.length === 1
+                ? t("storiesCountSingle")
+                : t("storiesCountPlural")}
             </span>
           </div>
 
@@ -132,17 +146,17 @@ function SearchContent() {
             <div className="py-16 text-center">
               <div className="mx-auto h-8 w-8 animate-spin rounded-full border-2 border-red-600 border-t-transparent" />
               <p className="mt-3 text-xs text-gray-500 font-medium">
-                Searching news database...
+                {t("searchingDatabase")}
               </p>
             </div>
           ) : results.length === 0 ? (
             <div className="rounded-xl border border-gray-200 bg-white p-12 text-center shadow-sm">
               <FileText size={40} className="mx-auto text-gray-300" />
               <h3 className="mt-3 text-base font-bold text-gray-900">
-                No matching stories found
+                {t("noMatchingStories")}
               </h3>
               <p className="mt-1 text-xs text-gray-500">
-                Try searching for different terms or browse our latest coverage.
+                {t("tryDifferentTerms")}
               </p>
             </div>
           ) : (
